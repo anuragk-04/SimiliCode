@@ -13,58 +13,61 @@ import { PieChart } from 'react-minimal-pie-chart';
 import axios from 'axios';
 
 const Upload = () => {
-  const [files1, setFiles1] = useState([]);
-  const [files2, setFiles2] = useState([]);
+  const [file1, setFile1] = useState(null);
+  const [file2, setFile2] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [score, setScore] = useState(null);
   const [error, setError] = useState('');
 
-  const handleFileUpload = (e, setFiles) => {
-    const selectedFiles = Array.from(e.target.files);
-    setFiles(selectedFiles);
+  const handleFileChange = (e, setFile) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
   };
 
   const handlePlagiarismCheck = async () => {
-    if (!files1.length || !files2.length) return;
+    if (!file1 || !file2) {
+      setError('Please upload both zip files.');
+      return;
+    }
 
     setIsLoading(true);
     setError('');
     setScore(null);
 
     const formData = new FormData();
-    files1.forEach((file) => formData.append('folder1', file));
-    files2.forEach((file) => formData.append('folder2', file));
+    formData.append('submission1', file1);
+    formData.append('submission2', file2);
 
     try {
-      const response = await axios.post('/api/upload', formData, {
+      const response = await axios.post('http://localhost:8000/api/plagiarism', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      if (response.data && typeof response.data.score === 'number') {
-        setScore(response.data.score);
+      if (response.data && Array.isArray(response.data) && response.data[0]?.score !== undefined) {
+        setScore(response.data[0].score);
       } else {
-        setError('Invalid response from server.');
+        setError('Unexpected response from server.');
       }
     } catch (err) {
+      console.error(err);
       setError('Upload failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const canRunCheck = files1.length > 0 && files2.length > 0;
-
   return (
-    <Container sx={{ py: 4 }}>
+    <Container sx={{ py: 12 }}>
       <Box display="flex" justifyContent="center" mb={4}>
         <Typography variant="h3" gutterBottom>
-          Upload Files (.zip)
+          Upload ZIP Files
         </Typography>
       </Box>
 
       <Grid container spacing={4} justifyContent="space-around">
+        {/* Folder 1 Upload */}
         <Grid item xs={12} md={6}>
           <Paper
             elevation={4}
@@ -79,26 +82,24 @@ const Upload = () => {
             }}
           >
             <Typography variant="h5" gutterBottom>
-              Upload Folder 1
+              Upload ZIP 1
             </Typography>
             <Button variant="contained" size="large" component="label" sx={{ mt: 3, px: 4, py: 1.5 }}>
-              Select Folder
+              Select ZIP File
               <input
                 type="file"
-                webkitdirectory="true"
-                mozdirectory="true"
-                directory="true"
-                multiple
+                accept=".zip"
                 hidden
-                onChange={(e) => handleFileUpload(e, setFiles1)}
+                onChange={(e) => handleFileChange(e, setFile1)}
               />
             </Button>
             <Typography variant="body1" sx={{ mt: 3 }}>
-              {files1.length} files selected
+              {file1 ? file1.name : 'No file selected'}
             </Typography>
           </Paper>
         </Grid>
 
+        {/* Folder 2 Upload */}
         <Grid item xs={12} md={6}>
           <Paper
             elevation={4}
@@ -113,32 +114,30 @@ const Upload = () => {
             }}
           >
             <Typography variant="h5" gutterBottom>
-              Upload Folder 2
+              Upload ZIP 2
             </Typography>
             <Button variant="contained" size="large" component="label" sx={{ mt: 3, px: 4, py: 1.5 }}>
-              Select Folder
+              Select ZIP File
               <input
                 type="file"
-                webkitdirectory="true"
-                mozdirectory="true"
-                directory="true"
-                multiple
+                accept=".zip"
                 hidden
-                onChange={(e) => handleFileUpload(e, setFiles2)}
+                onChange={(e) => handleFileChange(e, setFile2)}
               />
             </Button>
             <Typography variant="body1" sx={{ mt: 3 }}>
-              {files2.length} files selected
+              {file2 ? file2.name : 'No file selected'}
             </Typography>
           </Paper>
         </Grid>
       </Grid>
 
+      {/* Submit Button */}
       <Box mt={5} textAlign="center">
         <Button
           variant="contained"
           color="primary"
-          disabled={!canRunCheck || isLoading}
+          disabled={!file1 || !file2 || isLoading}
           onClick={handlePlagiarismCheck}
           size="large"
           sx={{ px: 5, py: 2 }}
@@ -147,12 +146,14 @@ const Upload = () => {
         </Button>
       </Box>
 
+      {/* Error Alert */}
       {error && (
         <Alert severity="error" sx={{ mt: 3 }}>
           {error}
         </Alert>
       )}
 
+      {/* Pie Chart */}
       {score !== null && (
         <Box mt={5} textAlign="center">
           <Typography variant="h6" gutterBottom>
