@@ -10,7 +10,7 @@ const NavBar = () => {
         {/* Left - Logo and Title */}
         <Box
           component={Link}
-          to="/upload"
+          to="/"
           sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}
         >
           <Typography variant="h5" component="div">
