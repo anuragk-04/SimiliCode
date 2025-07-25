@@ -22,7 +22,7 @@ const AboutPage = () => {
     {
       title: "What is SimiliCode?",
       points: [
-        "SimiliCode is a plagiarism detection application built using TypeScript, ReactJS and NodeJS.",
+        "SimiliCode is a plagiarism detection application built using TypeScript, JavaScript, ReactJS and NodeJS.",
         "It detects similarity between JavaScript codebases.",
         "Supports single/multiple files across nested folders.",
         "Detects renamed variables, moved code, changed comments, and more.",
@@ -34,8 +34,7 @@ const AboutPage = () => {
       points: [
         "Upload two zip files containing JavaScript files (non-JS files are ignored).",
         "Click 'Check Plagiarism' to start detection.",
-        "View result as a similarity percentage.",
-        "Click 'Compare' to view side-by-side matched code.",
+        " Click 'View Result' as a similarity percentage.",
         "Use 'Next' and 'Prev' to navigate matched files.",
       ],
     },

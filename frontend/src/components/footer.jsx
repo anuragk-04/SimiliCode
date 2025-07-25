@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const contributors = [
-  { name: 'Anurag', url: 'https://www.linkedin.com/in/deepak-kumar-bb1810115/' },
+  { name: 'Anurag', url: 'https://www.linkedin.com/in/anuragk04/' },
   { name: 'Virat Yadav', url: 'https://www.linkedin.com/in/jasonlu123/' },
 ];
 
@@ -42,7 +42,7 @@ const Footer = () => {
             <Box display="flex" alignItems="center" mb={1}>
               <LocationOnIcon sx={{ mr: 1 }} />
               <Link
-                href="https://www.khoury.northeastern.edu/"
+                href="https://www.mnnit.ac.in/"
                 target="_blank"
                 rel="noreferrer"
                 underline="hover"
@@ -53,7 +53,7 @@ const Footer = () => {
             </Box>
             <Typography variant="body1">
               <Link
-                href="https://www.northeastern.edu/"
+                href="https://www.mnnit.ac.in/"
                 target="_blank"
                 rel="noreferrer"
                 underline="hover"
