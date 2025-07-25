@@ -76,11 +76,6 @@
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js v16+
-- npm or yarn
-- Python (if AST comparison done via Python; else optional)
-
 ### 1. Clone the repository
 <pre>
 git clone https://github.com/your-username/similicode.git
