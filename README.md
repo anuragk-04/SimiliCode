@@ -45,7 +45,7 @@
 ![Upload Zip File Page](./screenshots/uploadfile.png)
 ![View Result ](./screenshots/viewResult.png)
 ![Similarity and Comparision](./screenshots/similarityAndComparision.png)
-![Use Prev Next Button](./screenshots/similarityAndComparision2.png)
+![Use Prev Next Button](./screenshots/SimilarityAndComparision2.png)
 ![About Page](./screenshots/aboutPage.png)
 
 
