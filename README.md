@@ -82,23 +82,23 @@
 - Python (if AST comparison done via Python; else optional)
 
 ### 1. Clone the repository
-<pre>```bash
+<pre>
 git clone https://github.com/your-username/similicode.git
-cd similicode ```</pre>
+cd similicode </pre>
 
 ### 2. Start Frontend
-<pre>```bash
+<pre>
 cd frontend
 npm install
 npm run dev
-```</pre>
+</pre>
 
 ### 3. Start Backend
-<pre>```bash
+<pre>
 cd server
 npm install
 npm start 
- ```</pre>
+ </pre>
 
 
 ## 🚈 Future Improvements
