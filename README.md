@@ -98,9 +98,7 @@ npm start
 
 ## 🚈 Future Improvements
 
-
 - [ ] Support for multiple languages like Python, C++, etc.
-- [ ] Inline diff viewer for better visualization
 - [ ] Export similarity reports as downloadable PDFs
 - [ ] GitHub repo link checker and plagiarism from public repos
 
