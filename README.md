@@ -45,7 +45,7 @@
 ![Upload Zip File Page](./screenshots/uploadfile.png)
 ![View Result ](./screenshots/viewResult.png)
 ![Similarity and Comparision](./screenshots/similarityAndComparision.png)
-![Use Prev Next Button to See Match in Different Files](./screenshots/similarityAndComparision2.png)
+![Use Prev Next Button](./screenshots/similarityAndComparision2.png)
 ![About Page](./screenshots/aboutPage.png)
 
 
@@ -86,15 +86,15 @@
 git clone https://github.com/your-username/similicode.git
 cd similicode
 
-### 2. Start frontend
+<!-- 2. Start frontend -->
 cd frontend
 npm install
 npm run dev
 
-### 3. Start backend
+<!-- 3. Start backend -->
 cd server
 npm install
-npm start
+npm start ```
 
 
 ## 🚈 Future Improvements
@@ -111,4 +111,3 @@ npm start
 **Anurag Kushwaha** 
 📫 [LinkedIn](https://www.linkedin.com/in/anuragk04/)  
 🐙 [GitHub](https://github.com/anuragk-04)  
-
