@@ -86,14 +86,14 @@
 git clone https://github.com/your-username/similicode.git
 cd similicode ```</pre>
 
-###2. Start frontend
+### 2. Start Frontend
 <pre>```bash
 cd frontend
 npm install
 npm run dev
 ```</pre>
 
-###3. Start backend
+### 3. Start Backend
 <pre>```bash
 cd server
 npm install
@@ -103,7 +103,7 @@ npm start
 
 ## 🚈 Future Improvements
 
-```txt
+
 - [ ] Support for multiple languages like Python, C++, etc.
 - [ ] Inline diff viewer for better visualization
 - [ ] Export similarity reports as downloadable PDFs
