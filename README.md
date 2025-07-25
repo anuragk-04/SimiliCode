@@ -78,7 +78,7 @@
 
 ### 1. Clone the repository
 <pre>
-git clone https://github.com/your-username/similicode.git
+git clone https://github.com/anuragk-04/SimiliCode.git
 cd similicode </pre>
 
 ### 2. Start Frontend
