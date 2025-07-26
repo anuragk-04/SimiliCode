@@ -4,8 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const contributors = [
-  { name: 'Anurag', url: 'https://www.linkedin.com/in/anuragk04/' },
-  { name: 'Virat Yadav', url: 'https://www.linkedin.com/in/jasonlu123/' },
+  { name: 'Anurag', url: 'https://www.linkedin.com/in/anuragk04/' }
 ];
 
 const Footer = () => {
@@ -16,7 +15,7 @@ const Footer = () => {
           {/* Contributors Section */}
           <Grid item xs={12} md={6} textAlign={'left'}>
             <Typography variant="h6" gutterBottom>
-              <u><b>Contributors</b></u>
+              <u><b>Developer</b></u>
             </Typography>
             <Grid container spacing={1} direction={'column'}>
               {contributors.map((person) => (
@@ -28,9 +27,9 @@ const Footer = () => {
                     underline="hover"
                     display="flex"
                     alignItems="center"
-                    sx={{ fontSize: '1.1rem' }}
+                    sx={{ fontSize: '1.5rem' }}
                   >
-                    {person.name} <LinkedInIcon sx={{ fontSize: 20, ml: 1 }} />
+                    {person.name} <LinkedInIcon sx={{ fontSize: 30, ml: 1 }} />
                   </Link>
                 </Grid>
               ))}
