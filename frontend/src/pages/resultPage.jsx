@@ -19,7 +19,7 @@ const ResultPage = () => {
           Back
         </Button>
       </Box>
-      <Box display={'flex'} sx={{pt:6}}>
+      <Box display="flex" flexWrap="wrap" sx={{ pt: 6, gap: 4 }}>
         <PlagResult />
         <CodeCompare />
       </Box>

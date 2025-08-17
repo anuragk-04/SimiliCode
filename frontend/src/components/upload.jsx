@@ -43,15 +43,19 @@ const Upload = () => {
     formData.append('submission2', file2);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/plagiarism', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      const response = await axios.post('http://localhost:3000/api/plagiarism', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      if (response.data && Array.isArray(response.data) && response.data[0]?.score !== undefined) {
-        setScore(response.data[0].score);
-        setResultData(response.data[0]); // Save full result
+      // Handle backend response
+      if (response.data && Array.isArray(response.data) && response.data.length > 0) {
+        const result = response.data[0];
+        if (result.score !== undefined) {
+          setScore(result.score);
+          setResultData(result);
+        } else {
+          setError('No score found in server response.');
+        }
       } else {
         setError('Unexpected response from server.');
       }

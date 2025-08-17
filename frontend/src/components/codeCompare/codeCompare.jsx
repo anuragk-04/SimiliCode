@@ -12,15 +12,9 @@ import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const CodeCompare = () => {
   const location = useLocation();
-  const data = location.state?.result;
+  const result = location.state?.result;
 
-  const plagiarismKeys = Object.keys(data || {})
-    .filter((key) => !isNaN(Number(key)))
-    .sort((a, b) => Number(a) - Number(b));
-
-  const [currentPairIndex, setCurrentPairIndex] = useState(0);
-
-  if (!data || plagiarismKeys.length === 0) {
+  if (!result || !result.similarities) {
     return (
       <Box textAlign="center" mt={10}>
         <Typography variant="h5" color="error">
@@ -30,16 +24,22 @@ const CodeCompare = () => {
     );
   }
 
-  const currentKey = plagiarismKeys[currentPairIndex];
-  const pairData = data[currentKey];
+  const similarityKeys = Object.keys(result.similarities).sort(
+    (a, b) => Number(a) - Number(b)
+  );
+
+  const [currentPairIndex, setCurrentPairIndex] = useState(0);
+
+  const currentKey = similarityKeys[currentPairIndex];
+  const pairData = result.similarities[currentKey];
 
   const file1 = pairData.submission1.file;
   const file2 = pairData.submission2.file;
   const lines1 = pairData.submission1.lines;
   const lines2 = pairData.submission2.lines;
 
-  const content1 = data.submission1[file1] || '';
-  const content2 = data.submission2[file2] || '';
+  const content1 = result.submission1[file1] || '';
+  const content2 = result.submission2[file2] || '';
 
   const highlightLines = (content, linesToHighlight) => {
     const lines = content.split('\n');
@@ -70,13 +70,7 @@ const CodeCompare = () => {
   };
 
   return (
-    <Box
-      sx={{ p: 5 }}
-      maxWidth="55vw"
-      minWidth="45vw"
-      minHeight="95vh"
-      ml="auto"
-    >
+    <Box sx={{ p: 7 }} maxWidth="55vw" minWidth="45vw" minHeight="95vh" ml="auto">
       <Typography variant="h3" align="center" gutterBottom fontWeight="bold" color="primary">
         Code Comparison
       </Typography>
@@ -86,55 +80,37 @@ const CodeCompare = () => {
           variant="contained"
           startIcon={<ArrowBack />}
           disabled={currentPairIndex === 0}
-          onClick={() => setCurrentPairIndex((prev) => prev - 1)}
+          onClick={() => setCurrentPairIndex(prev => prev - 1)}
         >
           Prev
         </Button>
-
         <Button
           variant="contained"
           endIcon={<ArrowForward />}
-          disabled={currentPairIndex === plagiarismKeys.length - 1}
-          onClick={() => setCurrentPairIndex((prev) => prev + 1)}
+          disabled={currentPairIndex === similarityKeys.length - 1}
+          onClick={() => setCurrentPairIndex(prev => prev + 1)}
         >
           Next
         </Button>
       </Box>
 
-      <Grid
-        container
-        spacing={2}
-        direction="row"
-        wrap="nowrap"
-        sx={{
-          overflowX: 'auto',
-          minHeight: '60vh',
-          scrollbarWidth: 'none', // Firefox
-          '&::-webkit-scrollbar': {
-            display: 'none',      // Chrome, Safari, Edge
-          },
-        }}
-      >
+      <Grid container spacing={2} sx={{ overflowX: 'auto', minHeight: '60vh' }}>
         {/* Submission 1 */}
         <Grid item xs={12} md={6}>
-          <Paper elevation={4} sx={{ p: 2, borderRadius: 3 }}>
-            <Typography variant="h6" gutterBottom color="primary">
+          <Paper elevation={4} sx={{ p: 2, borderRadius: 4, minHeight: 300, maxWidth: 300 }}>
+            <Typography variant="h5" gutterBottom color="primary">
               Submission 1 ({file1})
             </Typography>
-            <Divider sx={{ mb: 1 }} />
-            <Box
-              sx={{
-                maxHeight: '70vh',
-                overflowY: 'auto',
-                backgroundColor: '#f5f5f5',
-                p: 1,
-                borderRadius: 2,
-                scrollbarWidth: 'none',
-                '&::-webkit-scrollbar': {
-                  display: 'none',
-                },
-              }}
-            >
+            <Divider sx={{ mb: 2 }} />
+            <Box sx={{
+              maxHeight: '70vh',
+              overflowY: 'auto',
+              backgroundColor: '#f5f5f5',
+              p: 1,
+              borderRadius: 2,
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': { display: 'none' },
+            }}>
               {highlightLines(content1, lines1)}
             </Box>
           </Paper>
@@ -142,24 +118,20 @@ const CodeCompare = () => {
 
         {/* Submission 2 */}
         <Grid item xs={12} md={6}>
-          <Paper elevation={4} sx={{ p: 2, borderRadius: 3 }}>
-            <Typography variant="h6" gutterBottom color="primary">
+          <Paper elevation={4} sx={{ p: 2, borderRadius: 4, minHeight: 300, maxWidth: 300 }}>
+            <Typography variant="h5" gutterBottom color="primary">
               Submission 2 ({file2})
             </Typography>
-            <Divider sx={{ mb: 1 }} />
-            <Box
-              sx={{
-                maxHeight: '70vh',
-                overflowY: 'auto',
-                backgroundColor: '#f5f5f5',
-                p: 1,
-                borderRadius: 2,
-                scrollbarWidth: 'none',
-                '&::-webkit-scrollbar': {
-                  display: 'none',
-                },
-              }}
-            >
+            <Divider sx={{ mb: 2 }} />
+            <Box sx={{
+              maxHeight: '70vh',
+              overflowY: 'auto',
+              backgroundColor: '#f5f5f5',
+              p: 1,
+              borderRadius: 2,
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': { display: 'none' },
+            }}>
               {highlightLines(content2, lines2)}
             </Box>
           </Paper>

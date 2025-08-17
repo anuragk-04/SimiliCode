@@ -9,6 +9,7 @@ import {
   Container,
 } from '@mui/material';
 import { PieChart } from 'react-minimal-pie-chart';
+import CodeCompare from './codeCompare/codeCompare';
 
 const Result = () => {
   const location = useLocation();
@@ -31,23 +32,25 @@ const Result = () => {
 
   return (
     <Box maxWidth="40vw" sx={{ pl: 4, pt: 5 }}>
+      {/* Header */}
       <Box mt={1} textAlign="left">
-        <Typography variant="h3" align="center" gutterBottom fontWeight="bold" color="primary">
+        <Typography
+          variant="h3"
+          align="center"
+          gutterBottom
+          fontWeight="bold"
+          color="primary"
+        >
           Similarity Analysis
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
-          Here's a summary of the Similarity comparison between the two submissions.
+          Here's a summary of the similarity comparison between the two submissions.
         </Typography>
       </Box>
 
+      {/* Paper */}
       <Paper elevation={5} sx={{ mt: 3, pt: 4, pl: 5, minHeight: '95vh', borderRadius: 4 }}>
-        <Grid
-          container
-          spacing={4}
-          direction="column"
-          alignItems="flex-start"
-          sx={{ pl: 10 }}
-        >
+        <Grid container spacing={4} direction="column" alignItems="flex-start" sx={{ pl: 10 }}>
           {/* Pie Chart */}
           <Grid item xs={12}>
             <Box sx={{ pt: 5 }}>
@@ -57,7 +60,7 @@ const Result = () => {
                   { title: 'Original', value: originality, color: '#4caf50' },
                 ]}
                 animate
-                label={() => ''} // no labels inside the pie
+                label={() => ''}
                 radius={50}
               />
             </Box>
