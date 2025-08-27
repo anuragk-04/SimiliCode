@@ -67,9 +67,9 @@
 
 | Layer        | Technology                            |
 |--------------|---------------------------------------|
-| Frontend     | React.js, TypeScript, JavaScript, MUI |
-| Backend      | Node.js, Express                      |
-| AST Parsing  | Babel / Acorn / custom parser         |
+| Frontend     | React.js, JavaScript, MUI             |
+| Backend      | Node.js, Express, Typescript          |
+| AST Parsing  | Babel                                 |
 | File Upload  | Formidable                            |
 
 
