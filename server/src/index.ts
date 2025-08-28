@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const port: number = Number(process.env.PORT) || 3000;
-const UI_ENDPOINT: string = "https://jade-mooncake-3dc735.netlify.app/";
+const UI_ENDPOINT: string = "https://jade-mooncake-3dc735.netlify.app";
 
 
 app.use(express.json({ limit: "2mb" }));

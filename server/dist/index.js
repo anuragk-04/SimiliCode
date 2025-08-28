@@ -10,7 +10,7 @@ const service_1 = __importDefault(require("./Routes/service"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = Number(process.env.PORT) || 3000;
-const UI_ENDPOINT = "https://jade-mooncake-3dc735.netlify.app/";
+const UI_ENDPOINT = "https://jade-mooncake-3dc735.netlify.app";
 app.use(express_1.default.json({ limit: "2mb" }));
 const corsOptions = {
     origin: UI_ENDPOINT,
