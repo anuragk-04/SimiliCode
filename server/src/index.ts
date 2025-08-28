@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors, { CorsOptions } from "cors";
 import dotenv from "dotenv";
-import serveRequest from "../Routes/service";
+import serveRequest from "./Routes/service";
 
 dotenv.config();
 
