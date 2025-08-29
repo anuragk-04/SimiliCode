@@ -38,7 +38,14 @@
 4. **Compare Files**  
    Use **"Next"** and **"Prev"** buttons to navigate through matched file pairs.  
    Red highlights indicate matching code segments.
+---
+## 🚀 Live Demo
 
+You can try out a live version of the application here:
+
+[**Try SimiliCode Live!**](https://jade-mooncake-3dc735.netlify.app/)
+
+---
 
 ## 📸 Screenshot
 
