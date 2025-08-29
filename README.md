@@ -8,6 +8,7 @@
 You can try out a live version of the application here:
 
 [**Try SimiliCode Live!**](https://jade-mooncake-3dc735.netlify.app/)
+
 ---
 
 ## 🚀 Features
