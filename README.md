@@ -3,6 +3,12 @@
 **SimiliCode** is a robust and intelligent plagiarism detection application designed specifically for **JavaScript** codebases. It performs deep structural analysis using **Abstract Syntax Trees (ASTs)** to detect code similarities even when variable names are changed, comments are modified, or code blocks are rearranged.
 
 ---
+## 🚀 Live Demo
+
+You can try out a live version of the application here:
+
+[**Try SimiliCode Live!**](https://jade-mooncake-3dc735.netlify.app/)
+---
 
 ## 🚀 Features
 
@@ -38,12 +44,7 @@
 4. **Compare Files**  
    Use **"Next"** and **"Prev"** buttons to navigate through matched file pairs.  
    Red highlights indicate matching code segments.
----
-## 🚀 Live Demo
 
-You can try out a live version of the application here:
-
-[**Try SimiliCode Live!**](https://jade-mooncake-3dc735.netlify.app/)
 
 ---
 
